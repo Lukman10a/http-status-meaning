@@ -1,0 +1,5 @@
+test/
+jest.config.cjs
+.eslintrc
+.prettierrc
+CHANGELOG.md
