@@ -1,26 +1,50 @@
 import statusCodes from "./statusCodes.mjs";
+import {
+  availableLanguages,
+  categoryTranslations,
+  statusCodeTranslations,
+} from "./i18n.mjs";
+import statusCodeUseCases from "./useCases.mjs";
 
 /**
  * Returns the human-readable meaning of an HTTP status code
  * @param {number} code - The HTTP status code
+ * @param {string} [language='en'] - The language for the response
  * @returns {string} The human-readable meaning of the status code
  */
-export function getStatusMeaning(code) {
-  return statusCodes[code] || "Unknown status code";
+export function getStatusMeaning(code, language = "en") {
+  if (language === "en" || !availableLanguages.includes(language)) {
+    return statusCodes[code] || "Unknown status code";
+  }
+
+  return (
+    statusCodeTranslations[language]?.[code] ||
+    statusCodes[code] ||
+    "Unknown status code"
+  );
 }
 
 /**
  * Returns the category of an HTTP status code
  * @param {number} code - The HTTP status code
+ * @param {string} [language='en'] - The language for the response
  * @returns {string} The category of the status code
  */
-export function getStatusCategory(code) {
-  if (code >= 100 && code < 200) return "Informational";
-  if (code >= 200 && code < 300) return "Success";
-  if (code >= 300 && code < 400) return "Redirection";
-  if (code >= 400 && code < 500) return "Client Error";
-  if (code >= 500 && code < 600) return "Server Error";
-  return "Unknown";
+export function getStatusCategory(code, language = "en") {
+  let category;
+
+  if (code >= 100 && code < 200) category = "Informational";
+  else if (code >= 200 && code < 300) category = "Success";
+  else if (code >= 300 && code < 400) category = "Redirection";
+  else if (code >= 400 && code < 500) category = "Client Error";
+  else if (code >= 500 && code < 600) category = "Server Error";
+  else category = "Unknown";
+
+  if (language === "en" || !availableLanguages.includes(language)) {
+    return category;
+  }
+
+  return categoryTranslations[language][category] || category;
 }
 
 /**
@@ -71,9 +95,10 @@ export function isServerError(code) {
 /**
  * Returns all status codes in a specific category
  * @param {string} category - The category to filter by ('informational', 'success', 'redirection', 'clientError', 'serverError')
+ * @param {string} [language='en'] - The language for the response
  * @returns {Object} An object containing the filtered status codes and their meanings
  */
-export function getStatusCodesByCategory(category) {
+export function getStatusCodesByCategory(category, language = "en") {
   const result = {};
 
   for (const code in statusCodes) {
@@ -86,7 +111,7 @@ export function getStatusCodesByCategory(category) {
       (category === "clientError" && isClientError(numCode)) ||
       (category === "serverError" && isServerError(numCode))
     ) {
-      result[code] = statusCodes[code];
+      result[code] = getStatusMeaning(numCode, language);
     }
   }
 
@@ -95,8 +120,47 @@ export function getStatusCodesByCategory(category) {
 
 /**
  * Returns all status codes
+ * @param {string} [language='en'] - The language for the response
  * @returns {Object} An object containing all status codes and their meanings
  */
-export function getAllStatusCodes() {
-  return { ...statusCodes };
+export function getAllStatusCodes(language = "en") {
+  const result = {};
+
+  for (const code in statusCodes) {
+    result[code] = getStatusMeaning(parseInt(code), language);
+  }
+
+  return result;
 }
+
+/**
+ * Returns common use cases for a given status code
+ * @param {number} code - The HTTP status code
+ * @returns {string[]} Array of common use cases or empty array if none defined
+ */
+export function getStatusCodeUseCases(code) {
+  return statusCodeUseCases[code] || [];
+}
+
+/**
+ * Returns all supported languages
+ * @returns {string[]} Array of language codes
+ */
+export function getSupportedLanguages() {
+  return [...availableLanguages];
+}
+
+// Export everything for browser usage
+export default {
+  getStatusMeaning,
+  getStatusCategory,
+  isInformational,
+  isSuccess,
+  isRedirection,
+  isClientError,
+  isServerError,
+  getStatusCodesByCategory,
+  getAllStatusCodes,
+  getStatusCodeUseCases,
+  getSupportedLanguages,
+};
