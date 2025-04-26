@@ -1,5 +1,5 @@
 // Available languages
-export const availableLanguages = ["en", "es", "fr", "de", "zh"];
+export const availableLanguages = ["en", "es", "fr", "de", "pt", "it", "ru", "zh", "ja", "ar"];
 
 // Translations for status code categories
 export const categoryTranslations = {
@@ -35,6 +35,30 @@ export const categoryTranslations = {
     "Server Error": "Server-Fehler",
     Unknown: "Unbekannt",
   },
+  pt: {
+    Informational: "Informativo",
+    Success: "Sucesso",
+    Redirection: "Redirecionamento",
+    "Client Error": "Erro do Cliente",
+    "Server Error": "Erro do Servidor",
+    Unknown: "Desconhecido",
+  },
+  it: {
+    Informational: "Informativo",
+    Success: "Successo",
+    Redirection: "Reindirizzamento",
+    "Client Error": "Errore del Client",
+    "Server Error": "Errore del Server",
+    Unknown: "Sconosciuto",
+  },
+  ru: {
+    Informational: "Информационный",
+    Success: "Успех",
+    Redirection: "Перенаправление",
+    "Client Error": "Ошибка Клиента",
+    "Server Error": "Ошибка Сервера",
+    Unknown: "Неизвестно",
+  },
   zh: {
     Informational: "信息性",
     Success: "成功",
@@ -42,6 +66,22 @@ export const categoryTranslations = {
     "Client Error": "客户端错误",
     "Server Error": "服务器错误",
     Unknown: "未知",
+  },
+  ja: {
+    Informational: "情報",
+    Success: "成功",
+    Redirection: "リダイレクション",
+    "Client Error": "クライアントエラー",
+    "Server Error": "サーバーエラー",
+    Unknown: "不明",
+  },
+  ar: {
+    Informational: "معلوماتي",
+    Success: "نجاح",
+    Redirection: "إعادة توجيه",
+    "Client Error": "خطأ العميل",
+    "Server Error": "خطأ الخادم",
+    Unknown: "غير معروف",
   },
 };
 
@@ -52,33 +92,91 @@ export const statusCodeTranslations = {
     200: "OK - La solicitud ha tenido éxito.",
     201: "Creado - Se ha creado un nuevo recurso con éxito.",
     400: "Solicitud incorrecta - El servidor no pudo entender la solicitud.",
+    401: "No autorizado - Se requiere autenticación.",
+    403: "Prohibido - El servidor entendió la solicitud, pero se niega a autorizarla.",
     404: "No encontrado - El recurso solicitado no existe.",
     500: "Error interno del servidor - Un mensaje de error genérico para problemas del servidor.",
-    // Add other translations as needed
+    503: "Servicio no disponible - El servidor no está disponible temporalmente.",
   },
   fr: {
     200: "OK - La requête a réussi.",
     201: "Créé - Une nouvelle ressource a été créée avec succès.",
     400: "Mauvaise demande - Le serveur n'a pas pu comprendre la requête.",
+    401: "Non autorisé - Une authentification est nécessaire.",
+    403: "Interdit - Le serveur a compris la requête mais refuse de l'autoriser.",
     404: "Non trouvé - La ressource demandée n'existe pas.",
     500: "Erreur interne du serveur - Un message d'erreur générique pour les problèmes de serveur.",
-    // Add other translations as needed
+    503: "Service indisponible - Le serveur est temporairement indisponible.",
   },
   de: {
     200: "OK - Die Anfrage war erfolgreich.",
     201: "Erstellt - Eine neue Ressource wurde erfolgreich erstellt.",
     400: "Fehlerhafte Anfrage - Die Anfrage konnte nicht verstanden werden.",
+    401: "Nicht autorisiert - Authentifizierung ist erforderlich.",
+    403: "Verboten - Der Server hat die Anfrage verstanden, weigert sich aber, sie zu autorisieren.",
     404: "Nicht gefunden - Die angeforderte Ressource existiert nicht.",
     500: "Interner Serverfehler - Eine generische Fehlermeldung für Serverprobleme.",
-    // Add other translations as needed
+    503: "Dienst nicht verfügbar - Der Server ist vorübergehend nicht verfügbar.",
+  },
+  pt: {
+    200: "OK - A requisição foi bem-sucedida.",
+    201: "Criado - Um novo recurso foi criado com sucesso.",
+    400: "Requisição inválida - O servidor não conseguiu entender a requisição.",
+    401: "Não autorizado - Autenticação é necessária.",
+    403: "Proibido - O servidor entendeu a requisição, mas recusa-se a autorizá-la.",
+    404: "Não encontrado - O recurso solicitado não existe.",
+    500: "Erro interno do servidor - Uma mensagem de erro genérica para problemas no servidor.",
+    503: "Serviço indisponível - O servidor está temporariamente indisponível.",
+  },
+  it: {
+    200: "OK - La richiesta è stata completata con successo.",
+    201: "Creato - Una nuova risorsa è stata creata con successo.",
+    400: "Richiesta errata - Il server non ha potuto comprendere la richiesta.",
+    401: "Non autorizzato - È richiesta l'autenticazione.",
+    403: "Vietato - Il server ha compreso la richiesta, ma si rifiuta di autorizzarla.",
+    404: "Non trovato - La risorsa richiesta non esiste.",
+    500: "Errore interno del server - Un messaggio di errore generico per problemi del server.",
+    503: "Servizio non disponibile - Il server è temporaneamente non disponibile.",
+  },
+  ru: {
+    200: "OK - Запрос успешно выполнен.",
+    201: "Создано - Новый ресурс был успешно создан.",
+    400: "Плохой запрос - Сервер не смог понять запрос.",
+    401: "Не авторизован - Требуется аутентификация.",
+    403: "Запрещено - Сервер понял запрос, но отказывается его авторизовать.",
+    404: "Не найдено - Запрашиваемый ресурс не существует.",
+    500: "Внутренняя ошибка сервера - Общее сообщение об ошибке для проблем сервера.",
+    503: "Сервис недоступен - Сервер временно недоступен.",
   },
   zh: {
     200: "成功 - 请求成功。",
     201: "已创建 - 成功创建了新资源。",
     400: "错误请求 - 服务器无法理解该请求。",
+    401: "未授权 - 需要身份验证。",
+    403: "禁止 - 服务器理解请求，但拒绝授权。",
     404: "未找到 - 请求的资源不存在。",
     500: "服务器内部错误 - 服务器问题的通用错误消息。",
-    // Add other translations as needed
+    503: "服务不可用 - 服务器暂时不可用。",
+  },
+  ja: {
+    200: "OK - リクエストは成功しました。",
+    201: "作成済み - 新しいリソースが正常に作成されました。",
+    400: "不正なリクエスト - サーバーはリクエストを理解できませんでした。",
+    401: "未認証 - 認証が必要です。",
+    403: "禁止 - サーバーはリクエストを理解しましたが、承認を拒否しています。",
+    404: "見つかりません - 要求されたリソースは存在しません。",
+    500: "サーバー内部エラー - サーバーの問題に関する一般的なエラーメッセージ。",
+    503: "サービス利用不可 - サーバーは一時的に利用できません。",
+  },
+  ar: {
+    200: "موافق - نجح الطلب.",
+    201: "تم الإنشاء - تم إنشاء مورد جديد بنجاح.",
+    400: "طلب خاطئ - لم يستطع الخادم فهم الطلب.",
+    401: "غير مصرح - المصادقة مطلوبة.",
+    403: "محظور - فهم الخادم الطلب ولكنه يرفض تفويضه.",
+    404: "غير موجود - المورد المطلوب غير موجود.",
+    500: "خطأ داخلي في الخادم - رسالة خطأ عامة لمشاكل الخادم.",
+    503: "الخدمة غير متوفرة - الخادم غير متاح مؤقتًا.",
   },
 };
 

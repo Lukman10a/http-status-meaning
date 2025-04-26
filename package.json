@@ -1,10 +1,14 @@
 {
   "name": "http-status-meaning",
   "version": "1.0.0",
-  "description": "A simple package to get human-readable HTTP status codes with internationalization support.",
+  "description": "A comprehensive library for HTTP status codes with internationalization and use cases",
   "main": "src/index.mjs",
   "type": "module",
   "browser": "dist/http-status-meaning.js",
+  "types": "index.d.ts",
+  "bin": {
+    "http-status": "./src/cli.mjs"
+  },
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "build": "rollup -c",
@@ -17,7 +21,10 @@
     "meaning",
     "nodejs",
     "i18n",
-    "internationalization"
+    "internationalization",
+    "cli",
+    "http-status",
+    "http-codes"
   ],
   "author": "Lukman Abdulrauf",
   "license": "MIT",
@@ -33,5 +40,21 @@
     "@rollup/plugin-terser": "^0.4.4",
     "bundle-phobia-cli": "^0.14.14",
     "rollup": "^4.35.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/http-status-meaning.git"
+  },
+  "bugs": {
+    "url": "https://github.com/username/http-status-meaning/issues"
+  },
+  "homepage": "https://github.com/username/http-status-meaning",
+  "files": [
+    "src/",
+    "dist/",
+    "index.d.ts",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ]
 }
