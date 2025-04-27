@@ -220,7 +220,7 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a
-          href="https://github.com/username/http-status-meaning"
+          href="https://github.com/Lukman10a/http-status-meaning"
           target="_blank"
           rel="noopener noreferrer"
         >

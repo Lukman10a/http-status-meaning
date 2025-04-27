@@ -5,7 +5,7 @@ A simple yet comprehensive npm package that provides human-readable meanings for
 ## Installation
 
 ```bash
-npm install http-status-meaning
+npm install http-status-meaning@latest
 ```
 
 ## Usage

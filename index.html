@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Status Codes Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HTTP Status Codes</h1>
+            <p>Understand the meaning behind web response codes</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Enter a status code (e.g., 404)">
+            <button id="search-btn">Search</button>
+        </div>
+
+        <div class="result-container" id="result">
+            <div class="placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <p>Enter a status code to see its meaning</p>
+            </div>
+        </div>
+
+        <div class="categories">
+            <div class="category" data-range="1xx">
+                <h3>1xx: Informational</h3>
+                <p>The request was received, continuing process</p>
+            </div>
+            <div class="category" data-range="2xx">
+                <h3>2xx: Success</h3>
+                <p>The request was successfully received, understood, and accepted</p>
+            </div>
+            <div class="category" data-range="3xx">
+                <h3>3xx: Redirection</h3>
+                <p>Further action needs to be taken to complete the request</p>
+            </div>
+            <div class="category" data-range="4xx">
+                <h3>4xx: Client Error</h3>
+                <p>The request contains bad syntax or cannot be fulfilled</p>
+            </div>
+            <div class="category" data-range="5xx">
+                <h3>5xx: Server Error</h3>
+                <p>The server failed to fulfill a valid request</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 HTTP Status Codes Explorer</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html> 
