@@ -1,6 +1,6 @@
 {
   "name": "http-status-meaning",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A comprehensive library for HTTP status codes with internationalization and use cases",
   "main": "src/index.mjs",
   "type": "module",
